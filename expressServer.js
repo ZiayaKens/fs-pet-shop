@@ -5,7 +5,7 @@
 var express = require('express');
 var router = express.Router();
 
-// var router = express.Router();
+
 
 var fs = require("fs");
 
@@ -13,7 +13,6 @@ router.get("/pets", function(req, res) {
   fs.readFile("./pets.json", "utf8", function (err, data){
     if(err) throw err;
     var dataparse = JSON.parse(data);
-    // console.log(dataparse);
     res.send(dataparse);
   });
 });
@@ -27,7 +26,6 @@ router.get("/pets/:id", function(req, res){
       res.send(dataparse);
     }
     else {
-      // console.log("Should see an error>>>>???");
       res.setHeader("Content-type", "text/plain");
       res.status(404);
       res.send("Not Found");
